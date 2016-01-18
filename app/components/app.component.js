@@ -6,7 +6,7 @@
         ng.core.Component({
             selector: 'app',
             directives: [app.Todos.TodoComponent],
-            template: '<h1><todo></todo></h1>'
+            templateUrl: '/app/templates/app.html'
         })
             .Class({
                 constructor: function() {}

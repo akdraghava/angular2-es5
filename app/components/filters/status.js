@@ -13,14 +13,20 @@
 
                 constructor: function constructor() {
                     "use strict";
+                    this.currentFilter = 'all';
                     this.status = new ng.core.EventEmitter();
                 },
 
                 ngOnInit: function ngOnInit() {
                     "use strict";
-                    this.status.emit('all');
-                }
+                    this.status.emit(this.currentFilter);
+                },
 
+                onFilterSelect: function onFilterSelect(filterType) {
+                    "use strict";
+                    this.currentFilter = filterType;
+                    this.status.emit(this.currentFilter);
+                }
 
             });
 })(window.app || (window.app = {}));

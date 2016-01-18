@@ -1,4 +1,8 @@
 <div>
+    <div>
+        Showing <span *ngIf="status==='all'">all</span> Todo's <span *ngIf="status!=='all'">that are "{{status | uppercase}}"</span>
+        <span *ngIf="term!==''"> which starts with "{{term}}"</span>
+    </div>
     <ul>
         <li *ngFor="#todo of todoService.todos | status:status | search:term" >
             <todo-item-renderer
@@ -7,4 +11,7 @@
                     ></todo-item-renderer>
         </li>
     </ul>
+    <div [hidden]="(todoService.todos | status:status | search:term).length > 0">
+        No Todo's found <span *ngIf="term !== '' || status !== 'all'"> for search criteria</span>
+    </div>
 </div>
